@@ -33,12 +33,19 @@ cc.Class({
             type: cc.Node,
             default: null
         },
-        tips:cc.Node
+        tips:cc.Node,
+        vedioBtn:cc.Node
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad() {
+        if(D.getDay()=='2019111'||D.getDay()=='2019112'){
+            this.vedioBtn.active=false
+        }
+        if(D.bannerAd){
+            D.bannerDestory()
+        }
         this.ctx = this.theBoard.getComponent(cc.Graphics);
         this.previewCtx = this.previewBlock.getComponent(cc.Graphics);
         this.board = [];
@@ -359,6 +366,7 @@ cc.Class({
     },
 
     showGameOverInfo() {
+        D.bannerAdShow()
         this.overScoreLabel.string = 'score: ' + this.score;
         this.bestScoreLabel.string = 'best score: ' + this.bestScore;
 
@@ -371,6 +379,9 @@ cc.Class({
     },
 
     newGame() {
+        if(D.bannerAd){
+            D.bannerDestory()
+        }
         this.gameOverInfo.active = false;
         this.fps = 0;
         this.dropSpeed = DROPSPEED;

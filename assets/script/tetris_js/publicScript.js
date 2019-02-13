@@ -18,7 +18,9 @@ cc.Class({
 
     // LIFE-CYCLE CALLBACKS:
 
-    // onLoad () {},
+    onLoad () {
+        D.bannerAdShow()
+    },
 
     start () {
 
@@ -48,6 +50,9 @@ cc.Class({
         wx.navigateToMiniProgram({
             appId: 'wx7feef145b72f629b',
         })
+    },
+    watchVideo(){
+        D.videoLife()
     }
 
     // update (dt) {},
